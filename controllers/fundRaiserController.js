@@ -1,7 +1,8 @@
 const fundRaiser = require('../models/fundRaiserModel');
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
 // Controller function to handle the storage of data
-const fundRaiserController = async (req, res) => {
+const fundRaiserController = catchAsyncErrors(async (req, res) => {
     try {
         // Extract data from the request body
         const {
@@ -39,6 +40,6 @@ const fundRaiserController = async (req, res) => {
         console.error('Error storing data:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-};
+});
 
 module.exports = { fundRaiserController };
