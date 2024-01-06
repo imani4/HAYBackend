@@ -1,4 +1,4 @@
-const fundRaiser = require('../models/fundRaiser');
+const fundRaiser = require('../models/fundRaiserModel');
 
 // Controller function to handle the storage of data
 const fundRaiserController = async (req, res) => {
