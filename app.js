@@ -21,12 +21,21 @@ app.use(fileUpload());
 const user = require("./routes/userRoute");
 const order = require("./routes/orderRoute");
 const payment = require("./routes/paymentRoute");
+const investDetail = require("./routes/investDetailModel");
+const fundRaiser = require("./routes/fundRaiserRoute");
 
 app.use(require("cors")());
 app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
+app.use("/api/v1", investDetail);
+app.use("/api/v1", fundRaiser);
 
+app.use(express.static(path.join(__dirname, "./frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
+});
 
 // Middleware for Errors
 app.use(errorMiddleware);
