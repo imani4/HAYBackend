@@ -17,7 +17,7 @@ const fundRaiserController = async (req, res) => {
         } = req.body;
 
         // Create a new instance of the InvestUserDetail model
-        const fundRaiser = new fundRaiser({
+        const newFundRaiser = new fundRaiser({
             firstName,
             lastName,
             companyName,
@@ -30,7 +30,7 @@ const fundRaiserController = async (req, res) => {
         });
 
         // Save the data to MongoDB
-        const savedData = await fundRaiser.save();
+        const savedData = await newFundRaiser.save();
 
         // Respond with the saved data
         res.status(201).json(savedData);
